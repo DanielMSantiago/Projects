@@ -19,7 +19,7 @@ nav a {
     margin-left: 20px;
 }
 nav a:hover {
-    background-color: #ddd;
+    background-color: rgb(255, 253, 253);
     color: darkblue;
 }
 
@@ -29,4 +29,23 @@ nav a.active{
 }
 nav .icon{
     display: none;
+}
+
+section {
+    text-align: center;
+    position:fixed;
+    bottom: 700px;
+    right: 1300px;
+    width: 500px;
+    border: 2px solid blue;
+}
+
+p {
+    text-align: left;
+    font-size: 12pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    border: 1px solid blue;
+    position: relative; 
+    size: 500px;  
 }
