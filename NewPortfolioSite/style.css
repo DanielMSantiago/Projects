@@ -1,97 +1,109 @@
-body{
+body {
     background-color: #0e0816;
     font-family: Arial, Helvetica, sans-serif;
-    color:#e2dfdd;
+    color: #e2dfdd;
 }
-h1{
+
+h1 {
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #0e0816;
     color: #e2dfdd;
 }
-nav{
+
+nav {
     position: aboslute;
     background-color: #4717f6;
-    overflow:hidden;    
+    overflow: hidden;
+    z-index: -1000;
 }
+
 nav a {
     float: left;
     display: block;
-    color:#e2dfdd;
+    color: #e2dfdd;
     text-align: center;
     padding: auto;
     text-decoration: double;
     font-size: 17px;
     margin-left: 20px;
 }
+
 nav a:hover {
-    background-color:#4717f6;
-    color:#a239ca;
+    background-color: #4717f6;
+    color: #a239ca;
 }
 
-nav a.active{
+nav a.active {
     background-color: #4717f6;
-    color: #a239ca;;
+    color: #a239ca;
+    ;
 }
-nav .icon{
+
+nav .icon {
     display: none;
 }
 
 .dropdown {
-  float: left;
-  overflow: hidden;
+    float: left;
+    overflow: hidden;
 }
 
 .dropdown .dropbtn {
-  cursor: pointer;
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color:#e2dfdd;
-  padding: auto;
-  background-color: inherit;
-  font-family: inherit;
-  margin-left: 20px;
-  float: left;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: #e2dfdd;
+    padding: auto;
+    background-color: inherit;
+    font-family: inherit;
+    margin-left: 20px;
+    float: left;
 }
 
-nav a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
-  background-color: #4717f6;
-  display: block;
-  color:#a239ca;
+nav a:hover,
+.dropdown:hover .dropbtn,
+.dropbtn:focus {
+    background-color: #4717f6;
+    display: block;
+    color: #a239ca;
 }
+
 button {
-  overflow: hidden;
-  background-color:#4717f6;
-  font-family: Arial, Helvetica, sans-serif;
-  color:#e2dfdd;
-  display: block;
+    overflow: hidden;
+    background-color: #4717f6;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e2dfdd;
+    display: block;
 }
 
 .dropdown-content {
-  display: none;
-  background-color:#4717f6; 
-  color: #e2dfdd;
-  position: fixed; 
+    display: none;
+    position: inherit;
+    background-color: #4717f6;
+    color: #e2dfdd;
 }
 
 .dropdown-content a {
-  color:#e2dfdd;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}  
+    color: #e2dfdd;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    position: relative;
+}
 
 .dropdown-content a:hover {
-  background-color:#4717f6;
-  color: #a239ca;
+    background-color: #4717f6;
+    color: #a239ca;
 }
+
 .show {
-  display: block;
+    display: block;
 }
+
 section {
     text-align: center;
-    position:fixed;
     bottom: 100px;
     right: 650px;
     width: 500px;
@@ -105,20 +117,21 @@ p {
     font-size: 12pt;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
-    size: 600px;  
+    size: 600px;
 }
-.CodeBlock{
+
+.CodeBlock {
     height: 600px;
-    position: fixed;
-    z-index: 1;
+    position: relative;
 }
+
 footer {
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:60px;   /* Height of the footer */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    /* Height of the footer */
     background-color: #0e0816;
     font-family: Arial, Helvetica, sans-serif;
-    color:#e2dfdd
-
- }
+    color: #e2dfdd
+}
