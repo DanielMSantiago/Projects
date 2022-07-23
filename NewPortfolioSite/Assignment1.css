@@ -1,0 +1,31 @@
+body {
+    background-color: antiquewhite;
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkslateblue;
+    font-style: oblique;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+p {
+    display: grid;
+    text-align: center;
+    margin-top: 5%;
+}
+
+footer {
+    display: grid;
+    align-items: center;
+    margin-top: 12%;
+    margin-left: 2%;
+    
+}
+
+.Sus {
+    display: grid;
+    margin-left: 35%;
+    margin-top: 5%;
+}
