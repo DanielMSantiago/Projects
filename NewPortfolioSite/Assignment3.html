@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forms</title>
     <link rel="stylesheet" href="Assignment3.css">
+<<<<<<< HEAD
  
+=======
+>>>>>>> features
 </head>
+
 <body>
+<<<<<<< HEAD
     <form name="myForm" onsubmit="return validateForm()">
             <label>Name: </label>
             <input type="text" name="fullName">
@@ -43,5 +49,41 @@
     </tr>
 </table>
 </body>   
+=======
+    <form name="myForm" onsubmit="return ValidateForm()">
+        <label>Name: </label>
+        <input type="text" name="fullName" id="fullName">
+        <label>Address: </label>
+        <input id="address" name="address">
+        <label> City: </label>
+        <input id="city" name="city">
+        <label> State: </label>
+        <input id="state" name="state">
+        <label>Zip code: </label>
+        <input type="number" id="zip" name="zip">
+        <label>Email: </label>
+        <input type="email" id="email" name="email">
+        <label>Birth Date: </label>
+        <input type="date" id="bDate" name="bDate">
+        <label>Message: </label>
+        <input type="text" id="message" name="message">
+        <br>
+        <input type="submit" value="Initiate">
+    </form>
+    <br>
+    <table id="formEntries">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Email</th>
+            <th>Birth Date</th>
+            <th>Message</th>
+        </tr>
+    </table>
+</body>
+>>>>>>> features
 <script src="Assignment3.js"></script>
 </html>
