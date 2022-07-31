@@ -80,7 +80,7 @@ let ValidateState = (val, valName) => {
     if(!RegExpState.test(val)){
         alert('Please Enter the correct format for: ' + valName + ' (ex: XX)' )
         return false; 
-    }
+    } 
     else {
         return true;
     }
