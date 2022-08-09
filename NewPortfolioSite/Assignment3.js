@@ -8,6 +8,7 @@ let ValidateForm = () => {
     //validate address
     if(!ValidateBlank(document.forms['myForm']['address'].value, 'Address')) return false; 
     if(!ValidateAddress(document.forms['myForm']['address'].value, 'Address')) return false;
+    
     //validate city
     if(!ValidateBlank(document.forms['myForm']['city'].value, 'City')) return false; 
     if(!ValidateCity(document.forms['myForm']['city'].value, 'City')) return false; 
@@ -18,6 +19,7 @@ let ValidateForm = () => {
     
     //Validate Zip
     if(!ValidateBlank(document.forms['myForm']['zip'].value, 'Zipcode')) return false; 
+    if(!ValidateZip(document.forms['myForm']['zip'].value, 'Zipcode')) return false;
     
     //validate email
     if(!ValidateBlank(document.forms['myForm']['email'].value, 'Email')) return false;
@@ -74,9 +76,9 @@ let ValidateCity = (val, valName) => {
 }
 //Function to validate state (ex: NY, Fl)
 let ValidateState = (val, valName) => {
-    let RegExpState =  /^[a-zøæ]{2}\d{1}/;
-    if(!RegExpState.test(val)){
-        alert('Please Enter the correct format for: ' + valName + ' (ex: XX)' )
+    let regExpState =  /(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|PA|RI|S[CD]|T[NX]|UT|V[AT]|W[AIVY])/;
+    if(!regExpState.test(val)){
+        alert('Please Enter the correct format for: ' + valName + ' (ex: NY, NJ, FL)' )
         return false; 
     } 
     else {
@@ -84,7 +86,29 @@ let ValidateState = (val, valName) => {
     }
 }
 
-//Function to post entries after validation to table created
+let ValidateZip = (val, valName) => {
+    let regExpZip = /^\d{5}(?:[-\s]\d{4})?$/;
+    if(!regExpZip.test(val)){
+        alert('Please enter the correct format for ' + valName + '. Ex: XXXXX; XXXXX-XXXX; XXXXX XXXX');
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+let ValidateBirthDate = (val, valName) => {
+    let regExpBDate = /^(?:0[1-9]|[12]\d|3[01])([\/.-])(?:0[1-9]|1[012])\1(?:19|20)\d\d$/;
+    if(!regExpBDate.test(val)){
+        alert('Please enter the correct date for your' + valName);
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+    //Function to post entries after validation to table created
 /*
 let postEntries = () => {
     alert('Full Name: ' + fNameEntry);
