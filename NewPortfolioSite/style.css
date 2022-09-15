@@ -12,7 +12,6 @@ h1 {
 }
 
 nav {
-    position: aboslute;
     background-color: #4717f6;
     overflow: hidden;
     z-index: -1000;
@@ -23,7 +22,7 @@ nav a {
     display: block;
     color: #e2dfdd;
     text-align: center;
-    padding: auto;
+    padding:inherit;
     text-decoration: double;
     font-size: 17px;
     margin-left: 20px;
@@ -55,7 +54,7 @@ nav .icon {
     border: none;
     outline: none;
     color: #e2dfdd;
-    padding: auto;
+    padding: inherit;
     background-color: inherit;
     font-family: inherit;
     margin-left: 20px;
@@ -84,6 +83,7 @@ button {
     background-color: #4717f6;
     color: #e2dfdd;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .dropdown-content a {
@@ -102,15 +102,17 @@ button {
 .show {
     display: block;
 }
-section{
+
+article {
     margin-left: auto;
     margin-right: auto;
     width: 30em;
     text-align: center;
-
 }
-section p {
+
+article p {
     text-align: center;
+    font-weight: bold;
     bottom: 120px;
     right: 650px;
     width: 500px;
@@ -119,21 +121,22 @@ section p {
     color: #e2dfdd;
 }
 
-
 .CodeBlock {
     height: 600px;
     margin-left: 35%;
-    margin-right: auto;
+    margin-right: 35%;
+    margin-top: 3%;
 
 }
 
 footer {
     position: relative;
     bottom: 0;
+    margin-top: 10%;
     width: 100%;
     height: 60px;
-    /* Height of the footer */
     background-color: #0e0816;
     font-family: Arial, Helvetica, sans-serif;
     color: #e2dfdd
 }
+

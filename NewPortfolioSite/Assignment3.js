@@ -26,11 +26,15 @@ let ValidateForm = () => {
     
     //validate birthday
     if(!ValidateBlank(document.forms['myForm']['bDate'].value, 'Birthday')) return false;
-    
+    if(!ValidateBirthDate(document.forms['myForm']['bDate'].value, 'Birth Date')) return false;
     //validate message
     if(!ValidateBlank(document.forms['myForm']['message'].value, 'Message')) return false; 
-
+    
+    //Asks user to validate what is entered by displaying entered date
+    ConfirmEntries();
+    
     }
+
 //Function to check if entered value is blank
 let ValidateBlank = (val, valName) => {
     if (val == null || val == ''){
@@ -97,8 +101,22 @@ let ValidateZip = (val, valName) => {
     }
 }
 
+let ValidatePhone = (val, valName) => {
+    let regExpPhone = /(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?/img;
+    if(!regExpPhone.test(val)){
+        alert('Please enter the correct format for ' + valName);
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 let ValidateBirthDate = (val, valName) => {
-    let regExpBDate = /^(?:0[1-9]|[12]\d|3[01])([\/.-])(?:0[1-9]|1[012])\1(?:19|20)\d\d$/;
+    let regExpBDate = /((?:0[1-9])|(?:1[0-2]))\/((?:0[0-9])|(?:[1-2][0-9])|(?:3[0-1]))\/(\d{4})/;
+    var d_AsDate = Date.parse(val);
+    var today =  new Date();
+    
     if(!regExpBDate.test(val)){
         alert('Please enter the correct date for your' + valName);
         return false;
@@ -108,12 +126,66 @@ let ValidateBirthDate = (val, valName) => {
     }
 }
 
-    //Function to post entries after validation to table created
-/*
-let postEntries = () => {
-    alert('Full Name: ' + fNameEntry);
-    return true;
+    //Function to display a dialog box for entries
+
+let ConfirmEntries = () => {
+    var fullName = document.forms['myForm']['fullName'].value;
+    var address = document.forms['myForm']['address'].value;
+    var city = document.forms['myForm']['city'].value;
+    var state = document.forms['myForm']['state'].value;
+    var zip = document.forms['myForm']['zip'].value;
+    var email = document.forms['myForm']['email'].value;
+    var phoneNum = document.forms['myForm']['phoneNum'].value;
+    var bDate = document.forms['myForm']['bDate'].value;
+    var message = document.forms['myForm']['message'].value;
+
+    var confirmation = confirm('Fullname: ' + fullName + '\n' + 
+    'Address: ' + address + '\n' +
+    'City: ' + city + '\n' +
+    'State: ' + state + '\n' +
+    'Zip: ' + zip + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone Number: ' + phoneNum + '\n' +
+    'Birth Date: ' + bDate + '\n' +
+    'Message: ' + message
+    );
+
+    if(confirmation === true){
+        alert('Data being sent to email');
+    }
+
+    else {
+        alert('Please make the changes necessary to your liking');
+        
+    }
 }
-*/
+    //Function to post entries after validation to table created
 
+/* let PostEntries = () => {
 
+    var fullName = document.forms["myForm"]["fullName"].value;
+    var address = document.forms["myForm"]["address"].value;
+    var city = document.forms["myForm"]["city"].value;
+    var state = document.forms["myForm"]["state"].value;
+    var zip = document.forms["myForm"]["zip"].value;
+    var email = document.forms["myForm"]["email"].value;
+    var phoneNum = document.forms["myForm"]["phone"].value;
+    var bDate = document.forms["myForm"]["bDate"].value;
+    var mess = document.forms["myForm"]["message"].value;
+
+    var table = document.getElementById("formEntries");
+    //var rowCount = table.rows.length;
+    var row = table.insertRow(0);
+
+    
+    row.insertCell(0).innerHTML = fullName;
+    row.insertCell(1).innerHTML = address;
+    row.insertCell(2).innerHTML = city;
+    row.insertCell(3).innerHTML = state;
+    row.insertCell(4).innerHTML = zip;
+    row.insertCell(5).innerHTML = email;
+    row.insertCell(6).innerHTML = phoneNum;
+    row.insertCell(7).innerHTML = bDate;
+    row.insertCell(8).innerHTML = mess;
+
+} */
