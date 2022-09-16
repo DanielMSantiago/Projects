@@ -13,6 +13,13 @@ body {
 
 }
 
+a {
+    color: #e2dfdd;
+    background-color: #4717f6;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12pt;
+}
 form {
     margin-top: 5%;
     margin-left: 45%;
