@@ -24,9 +24,14 @@ let ValidateForm = () => {
     //validate email
     if(!ValidateBlank(document.forms['myForm']['email'].value, 'Email')) return false;
     
+    //validate Phone
+    if(!ValidateBlank(document.forms['myForm']['phoneNum'].value, 'Phone Number')) return false;
+    if(!ValidatePhone(document.forms['myForm']['phoneNum'].value, 'Phone Number')) return false;
+    
     //validate birthday
     if(!ValidateBlank(document.forms['myForm']['bDate'].value, 'Birthday')) return false;
-    if(!ValidateBirthDate(document.forms['myForm']['bDate'].value, 'Birth Date')) return false;
+    if(!ValidateBirthDate(document.forms['myForm']['bDate'].value, 'Birthday')) return false;
+    
     //validate message
     if(!ValidateBlank(document.forms['myForm']['message'].value, 'Message')) return false; 
     
@@ -104,7 +109,7 @@ let ValidateZip = (val, valName) => {
 let ValidatePhone = (val, valName) => {
     let regExpPhone = /(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?/img;
     if(!regExpPhone.test(val)){
-        alert('Please enter the correct format for ' + valName);
+        alert('Please enter the correct format for ' + valName + ' (XXX-XXX-XXXX)');
         return false;
     }
     else {
@@ -112,13 +117,22 @@ let ValidatePhone = (val, valName) => {
     }
 }
 
+function getAge(DOB) {
+    var today = new Date();
+    var birthDate = new Date(DOB);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }    
+    return age;
+}
+
 let ValidateBirthDate = (val, valName) => {
     let regExpBDate = /((?:0[1-9])|(?:1[0-2]))\/((?:0[0-9])|(?:[1-2][0-9])|(?:3[0-1]))\/(\d{4})/;
-    var d_AsDate = Date.parse(val);
-    var today =  new Date();
-    
-    if(!regExpBDate.test(val)){
-        alert('Please enter the correct date for your' + valName);
+    let enteredAge = getAge(val);
+    if(!regExpBDate.test(val) || enteredAge < 18){
+        alert('Please enter the correct date for your ' + valName + '(ex: mm/dd/yyyy). Please do not enter if you are below the age of 18.');
         return false;
     }
     else {
@@ -150,7 +164,7 @@ let ConfirmEntries = () => {
     'Message: ' + message
     );
 
-    if(confirmation === true){
+    if(confirmation == true){
         alert('Data being sent to email');
     }
 

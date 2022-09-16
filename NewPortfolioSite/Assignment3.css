@@ -13,11 +13,17 @@ body {
 
 }
 
+form {
+    margin-top: 5%;
+    margin-left: 45%;
+}
+
+
  input {
     color: #e2dfdd;
     background-color: #4717f6;
     display: grid;
     margin: .2%;
-    border-radius: 10px;;
+    border-radius: 10px;
 }
 
