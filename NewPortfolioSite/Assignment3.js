@@ -36,14 +36,15 @@ let ValidateForm = () => {
     if(!ValidateBlank(document.forms['myForm']['message'].value, 'Message')) return false; 
     
     //Asks user to validate what is entered by displaying entered date
-    ConfirmEntries();
-    
+    if(!ConfirmEntries()) return false;
+
+
     }
 
 //Function to check if entered value is blank
 let ValidateBlank = (val, valName) => {
     if (val == null || val == ''){
-        alert('Please enter a value for this field: ' + valName)
+        alert('Please enter a value for this field: ' + valName);
         return false;
     }
     else{
@@ -55,6 +56,7 @@ let ValidateFullName = (val, valName) => {
     let regExpName = /^[a-zA-Z]+ [a-zA-Z]+$/;
     if (!regExpName.test(val)){
         alert("Please enter your " + valName + "(First and Last)");
+        document.getElementById('fullName').style.backgroundColor = 'red';
         return false; 
     }
     else {
@@ -66,6 +68,7 @@ let ValidateAddress = (val, valName) => {
     let regExpAddr = /^\w+(\s\w+){2,}/;
     if (!regExpAddr.test(val)){
         alert('Please enter the correct format for an: ' + valName);
+        document.getElementById('address').style.backgroundColor = 'red';
         return false; 
     }
     else {
@@ -77,6 +80,7 @@ let ValidateCity = (val, valName) => {
     let regExpCity = /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/;
     if(!regExpCity.test(val)){
         alert('Please enter the correct format for a: ' + valName);
+        document.getElementById('city').style.backgroundColor = 'red';
         return false;
     }
     else {
@@ -88,6 +92,7 @@ let ValidateState = (val, valName) => {
     let regExpState =  /(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|PA|RI|S[CD]|T[NX]|UT|V[AT]|W[AIVY])/;
     if(!regExpState.test(val)){
         alert('Please Enter the correct format for: ' + valName + ' (ex: NY, NJ, FL)' )
+        document.getElementById('state').style.backgroundColor = 'red';
         return false; 
     } 
     else {
@@ -99,6 +104,7 @@ let ValidateZip = (val, valName) => {
     let regExpZip = /^\d{5}(?:[-\s]\d{4})?$/;
     if(!regExpZip.test(val)){
         alert('Please enter the correct format for ' + valName + '. Ex: XXXXX; XXXXX-XXXX; XXXXX XXXX');
+        document.getElementById('zip').style.backgroundColor = 'red';
         return false;
     }
     else{
@@ -110,6 +116,7 @@ let ValidatePhone = (val, valName) => {
     let regExpPhone = /(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?/img;
     if(!regExpPhone.test(val)){
         alert('Please enter the correct format for ' + valName + ' (XXX-XXX-XXXX)');
+        document.getElementById('phoneNum').style.backgroundColor = 'red';
         return false;
     }
     else {
@@ -133,6 +140,7 @@ let ValidateBirthDate = (val, valName) => {
     let enteredAge = getAge(val);
     if(!regExpBDate.test(val) || enteredAge < 18){
         alert('Please enter the correct date for your ' + valName + '(ex: mm/dd/yyyy). Please do not enter if you are below the age of 18.');
+        document.getElementById('bDate').style.backgroundColor = 'red';
         return false;
     }
     else {
@@ -166,11 +174,12 @@ let ConfirmEntries = () => {
 
     if(confirmation == true){
         alert('Data being sent to email');
+        return true;
     }
 
     else {
         alert('Please make the changes necessary to your liking');
-        
+        window.history.go();
     }
 }
     //Function to post entries after validation to table created
