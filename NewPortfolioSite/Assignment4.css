@@ -1,0 +1,12 @@
+h1, h3, p{
+    text-align: center;
+  }
+  label, input {
+    margin: 1%;
+  }
+  
+  .container{
+    min-width: 400px;
+    height: 400px;
+    margin: 0 auto;
+  }
