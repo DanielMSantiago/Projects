@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+button {
+    text-align: center;
+    background-color: blue;
+    color: blanchedalmond;
+}
+
+button:hover {
+    text-align: center;
+    background-color: aliceblue;
+    color: black;
+}
+
+
