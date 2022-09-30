@@ -1,14 +1,13 @@
-var t = 0;
+var t = 1;
 var c = document.getElementById("myCanvas");
-var R = c.width/2;
+var R = 100;
+var r = 50;
 
 var ctx = c.getContext("2d");
 
 
 function doDrawing() {
     t = 0;
-
-     
     // Clear the Canvas
     ctx.clear();
     
@@ -28,31 +27,22 @@ function doDrawing() {
     //Use the timer to create drawing
     var interval = setInterval(function(){
     timesRun += 1;
-    if(timesRun === 100){
+    if(timesRun === 200){
         clearInterval(interval); }
         
-    drawCircle();
+    //drawCircle();
     drawSpiro();}
     , 10); 
     
 }
-function drawCircle()
-{
-  t += 0.1;
-  x = Math.floor(R+R*Math.cos(t));
-  y = Math.floor(R+R*Math.sin(t));
-
-  ctx.lineTo(x,y);  
-  ctx.stroke();;
-}
 
 let drawSpiro = () => {
-    let r = Math.floor(Math.random() * Math.PI);
-    let O = Math.floor(R);
-    for(i = 1; i < 100; i++){
-        let t = 0.1 * i;
-        let x = ((R+r)*Math.cos(t) - (r+O)*Math.cos(((R+r)/r)*t));
-        let y = ((R+r)*Math.sin(t) - (r+O)*Math.sin(((R+r)/r)*t));
+    //let r = Math.floor(Math.random() * Math.PI);
+    let O = 5 //Math.floor(Math.random());
+    for(i = 1; i < 2; i++){
+        t += i;
+        let x = (c.width/2) + (R+r)*Math.cos(t) - (r+O)*Math.cos(((R+r)/r)*t);
+        let y = (c.height/2) + (R+r)*Math.sin(t) - (r+O)*Math.sin(((R+r)/r)*t);
         ctx.lineTo(x,y);
         ctx.stroke();    
     }  
