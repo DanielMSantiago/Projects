@@ -3,7 +3,13 @@ h1 {
 }
 
 button {
+    font-size: 20pt;
+    display: block;
     text-align: center;
+    align-items: center;
+    padding: 1px;
+    margin-top: 5%;
+    margin-left: 50%;
     background-color: blue;
     color: blanchedalmond;
 }
@@ -14,4 +20,9 @@ button:hover {
     color: black;
 }
 
+canvas {
+    display: block;
+    margin-top: 5%;
+    margin-left: 28%;
+}
 
