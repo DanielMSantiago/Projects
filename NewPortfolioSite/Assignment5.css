@@ -9,7 +9,7 @@ button {
     align-items: center;
     padding: 1px;
     margin-top: 5%;
-    margin-left: 50%;
+    margin-left: 47%;
     background-color: blue;
     color: blanchedalmond;
 }
@@ -23,6 +23,6 @@ button:hover {
 canvas {
     display: block;
     margin-top: 5%;
-    margin-left: 28%;
+    margin-left: 36%;
 }
 
