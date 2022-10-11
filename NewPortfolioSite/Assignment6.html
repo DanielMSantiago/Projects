@@ -13,25 +13,48 @@
     <h1>
         Santiago Home Inventory
     </h1>
-    <table>
-        <thead>
-            <th>Year</th>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Color</th>
-            <
-        </thead>
-    </table>
+    <p id="JSONtable">
+
+    </p>
 </body>
 <script>
-        var display = document.getElementById("InventoryDisplay");
+        const table = document.createElement("table");
+        //JSON data
         var arr = [
-        {"Year":2022, "Make":"Audi", "Model":"TT", "Color":"Black", "Owner": "Valentino"},
-        {"Year":2015, "Make":"Audi", "Model":"A3", "Color":"Red", "Owner": "Marta"},
-        {"Year":2012, "Make":"Nissan", "Model":"Sentra", "Color":"Red", "Owner": "Danny"},
-        {"Year":2015, "Make":"Jeep", "Model":"Wrangler", "Color":"Gray", "Owner": "Alberto"}
+        {"Owner": "Valentino","Year":2022, "Make":"Audi", "Model":"TT", "Color":"Black"},
+        {"Owner": "Marta","Year":2015, "Make":"Audi", "Model":"A3", "Color":"Red"},
+        {"Owner": "Danny", "Year":2012, "Make":"Nissan", "Model":"Sentra", "Color":"Red" },
+        {"Owner": "Alberto","Year":2015, "Make":"Jeep", "Model":"Wrangler", "Color":"Gray"}
 ];
-        
+
+        let col = [];
+        for(let i=0;i<arr.length; i++){
+            for(let key in arr[i]){
+                if(col.indexOf(key) ===-1){
+                    col.push(key);
+                }
+            }
+        }
+
+        let tr = table.insertRow(-1);
+        for(let i=0; i<col.length;i++){
+            let th = document.createElement("th");
+            th.innerHTML=col[i];
+            tr.appendChild(th);
+        }
+
+        for(let i=0;i<arr.length;i++){
+            tr = table.insertRow(-1);
+            for(let j=0;j<col.length;j++){
+                let tabCell = tr.insertCell(-1);
+                tabCell.innerHTML= arr[i][col[j]];
+            }
+        }
+        const display = document.getElementById("JSONtable");
+        display.innerHTML = "";
+        display.appendChild(table);
+
+
         
         </script>
 </html>
