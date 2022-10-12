@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
-    
+    <script src="Assignment6.json"></script>
     <link rel="stylesheet" href="Assignment6.css">
     <title>Assignment 6</title>
 </head>
@@ -18,43 +18,69 @@
     </p>
 </body>
 <script>
-        const table = document.createElement("table");
-        //JSON data
-        var arr = [
-        {"Owner": "Valentino","Year":2022, "Make":"Audi", "Model":"TT", "Color":"Black"},
-        {"Owner": "Marta","Year":2015, "Make":"Audi", "Model":"A3", "Color":"Red"},
-        {"Owner": "Danny", "Year":2012, "Make":"Nissan", "Model":"Sentra", "Color":"Red" },
-        {"Owner": "Alberto","Year":2015, "Make":"Jeep", "Model":"Wrangler", "Color":"Gray"}
-];
-
-        let col = [];
-        for(let i=0;i<arr.length; i++){
-            for(let key in arr[i]){
-                if(col.indexOf(key) ===-1){
-                    col.push(key);
-                }
-            }
-        }
-
-        let tr = table.insertRow(-1);
-        for(let i=0; i<col.length;i++){
-            let th = document.createElement("th");
-            th.innerHTML=col[i];
-            tr.appendChild(th);
-        }
-
-        for(let i=0;i<arr.length;i++){
-            tr = table.insertRow(-1);
-            for(let j=0;j<col.length;j++){
-                let tabCell = tr.insertCell(-1);
-                tabCell.innerHTML= arr[i][col[j]];
-            }
-        }
-        const display = document.getElementById("JSONtable");
-        display.innerHTML = "";
-        display.appendChild(table);
-
-
         
+        
+    
+    var xhttp = new XMLHttpRequest()
+    xhttp.open("GET", "Assignment6.json", true);
+    xhttp.onload = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            
+            var famInventory = JSON.parse(xhttp.responseText);
+            
+            //create table
+            var table = document.createElement("table");
+            table.border = "1";
+
+            //header row
+            var row = table.insertRow(-1);
+            
+            //Headers for the table
+            var headerCell = document.createElement("th");
+            headerCell.innerHTML = "Owner";
+            row.appendChild(headerCell);
+
+            headerCell = document.createElement("th");
+            headerCell.innerHTML = "Year";
+            row.appendChild(headerCell);
+
+            headerCell = document.createElement("th");
+            headerCell.innerHTML = "Make";
+            row.appendChild(headerCell);
+
+            headerCell = document.createElement("th");
+            headerCell.innerHTML = "Model";
+            row.appendChild(headerCell);
+
+            headerCell = document.createElement("th");
+            headerCell.innerHTML = "Color";
+            row.appendChild(headerCell);
+            
+            //add rows of data
+            for(var i = 0; i < famInventory.length; i++){
+                var row = table.insertRow(-1);
+
+                var cell = row.insertCell(-1);
+                cell.innerHTML = famInventory[i].Owner;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = famInventory[i].Year;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = famInventory[i].Make;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = famInventory[i].Model;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = famInventory[i].Color;
+            }
+            var Jtable = document.getElementById("JSONtable");
+            Jtable.innerHTML = "";
+            Jtable.appendChild(table);
+        }
+        
+    };
+    xhttp.send();
         </script>
 </html>
