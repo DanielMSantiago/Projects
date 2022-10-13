@@ -1,0 +1,23 @@
+body {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: #000000;
+}
+
+deal {
+    text-align: left;
+    color: #e2dfdd;
+    font-size: 18pt;
+    background-color: #4717f6;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+deal:hover {
+    background-color: #e2dfdd;
+    color: #000000;
+}
+
+discard {
+    border: #000000;
+}
