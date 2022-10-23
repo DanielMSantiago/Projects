@@ -1,12 +1,24 @@
+
+//click and deals five random cards at once
 $(document).ready(function(){
     $("#deal").click(function () {
         for(let i = 0; i < 5; i++){
             dealCard(randomCard());
+            removeCard(i);
+            init();
+            
         }
+        //drag and drop
+        function init() {
+            $(".draggableIMG").draggable({
+            cursor: "move"
+            });
+            $( ".discard" ).droppable({
+                drop: handleDropEvent
+            });   
+        };    
     });
-});
-
-
+});  
 
 var cardsInDeck = new Array();
 var numberOfCardsInDeck = 67;
@@ -83,14 +95,23 @@ let dealCard = (i) => {
     if (numberOfCardsInDeck == 0) return false;
     var img = document.createElement("img");
     img.src = "PNG-cards-1.3/" + cardsInDeck[i] + ".png";
+    img.setAttribute('class', 'draggableIMG');
     
+    //adds img to draggable div
     document.getElementById("draggable").appendChild(img);
-    removeCard(i);
 }
+
+//removes image when dropped in div "discard"
+let handleDropEvent = ( event, ui ) => {
+    var draggable = ui.draggable;
+    draggable.remove();  
+  }
+  
 
 let randomCard = () => {
    return Math.floor(Math.random() * numberOfCardsInDeck);  
 }
+
 let removeCard = (c) => {
 
     // simply make every higher numbered card move down 1
@@ -98,10 +119,6 @@ let removeCard = (c) => {
     {
         cardsInDeck[j] = cardsInDeck[j+1];
     }
-    numberOfCardsInDeck--;
+    numberOfCardsInDeck--;  
+};
 
-$(document).ready(function(){
-    $("img").draggable({
-        cursor: "hand"
-    });
-    });}
