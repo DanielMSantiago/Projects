@@ -122,19 +122,31 @@ article p {
 }
 
 .CodeBlock {
-    height: 600px;
-    width: 700px;
-    margin-left: 20%;
-    margin-right: 35%;
-    margin-top: 3%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 .Brief-Insight {
-    Margin: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 125px;
 }
 
-.links {
-    display: flexbox;
+h3 {
+    margin-top: 30%;
+    text-align: center;
+}
+
+.Links {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    width: 100%;
 }
 
 h3 {
@@ -144,7 +156,6 @@ h3 {
 img {
     align-items: center;
     width: 33.33%;
-    padding: 5px;
 }
 
 .Linkedin-Logo:hover {
@@ -158,4 +169,8 @@ img {
 .Linkedin-Logo {
     height: 90px;
     width: 90px;
+}
+
+.Github-Logo {
+    height: 90px;
 }
