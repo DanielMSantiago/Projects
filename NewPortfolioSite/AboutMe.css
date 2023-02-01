@@ -19,3 +19,12 @@ h1 {
 .btn:hover {
     color: #a239ca;
 }
+
+.LittleAbout,
+.Contact {
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: 500px;
+    height: 350px;
+}
